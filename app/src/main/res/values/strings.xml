@@ -1,16 +1,32 @@
 <resources>
     <string name="app_name">SDS_mobileproject</string>
 
+
     <string-array name="items">
         <item>Chicken</item>
         <item>Minced meat</item>
+        <item>Pork</item>
         <item>Broccoli</item>
+        <item>RiceRaw</item>
+        <item>Paprika</item>
     </string-array>
 
-    <string-array name="calories">
+    <string-array name="kcals">
         <item>165 kcal</item>
         <item>264 kcal</item>
+        <item>120 kcal</item>
         <item>165 kcal</item>
+        <item>350 kcal</item>
+        <item>289 kcal</item>
+    </string-array>
+
+    <string-array name="description">
+        <item>Uncooked</item>
+        <item>Uncooked</item>
+        <item>Uncooked</item>
+        <item>Uncooked</item>
+        <item>Uncooked</item>
+        <item>Uncooked</item>
     </string-array>
 
 </resources>

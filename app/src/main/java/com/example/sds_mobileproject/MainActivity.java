@@ -4,59 +4,58 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
-    static ArrayList<String> items;
+    String[] items;
+    String[] description;
+    String[] calories;
+
     static ListView listView;
-    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button addBtn = (Button) findViewById(R.id.add_btn);
-        Button switchToCalc = (Button) findViewById(R.id.Calculator);
-        listView = findViewById(R.id.listView);
         Resources res = getResources();
 
-        items = new ArrayList<>();
-        items.add("Chicken 165Kcal");
-        items.add("Pork 120Kcal");
-        items.add("Paprika 289Kcal");
-        items.add("RiceRaw 350Kcal");
+        //Button addBtn = (Button) findViewById(R.id.add_btn);
+        Button switchToCalc = (Button) findViewById(R.id.Calculator);
+        listView = findViewById(R.id.calcListView);
 
-        adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, items);
-        listView.setAdapter(adapter);
+        items = res.getStringArray(R.array.items);
+        //eatingTimes = res.getStringArray(R.array.eatingTimes);
+        description = res.getStringArray(R.array.description);
+        calories = res.getStringArray(R.array.kcals);
 
+        ItemAdapter itemAdapter = new ItemAdapter(this, items, description, calories);
+        listView.setAdapter(itemAdapter);
 
-
-
-        addBtn.setOnClickListener(new View.OnClickListener() {
+        /*addBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
+                System.out.print()
+
                 EditText firstNumEditText = (EditText) findViewById(R.id.firstNumEditText);
                 EditText secondNumEditText = (EditText) findViewById(R.id.secondNumEditText);
-                //TextView resultTextView = (TextView) findViewById(R.id.resultTextView);
+                TextView resultTextView = (TextView) findViewById(R.id.resultTextView);
 
-
-                int num1 = Integer.parseInt(firstNumEditText.getText().toString());
+                int position = items.length + 1;
+                String name =  firstNumEditText.getText().toString();
                 int num2 = Integer.parseInt(secondNumEditText.getText().toString());
-                int result = num1 + num2;
-                //resultTextView.setText(result + "");
+                String result = name + num2;
+                items[position] = name;
+                int num1 = Integer.parseInt(firstNumEditText.getText().toString());
+                resultTextView.setText(result + "");
 
             }
-        });
+        });*/
 
         switchToCalc.setOnClickListener(new View.OnClickListener() {
             @Override
