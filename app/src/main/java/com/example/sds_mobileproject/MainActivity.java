@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -23,39 +24,25 @@ public class MainActivity extends AppCompatActivity {
 
         Resources res = getResources();
 
-        //Button addBtn = (Button) findViewById(R.id.add_btn);
         Button switchToCalc = (Button) findViewById(R.id.Calculator);
         listView = findViewById(R.id.calcListView);
 
         items = res.getStringArray(R.array.items);
-        //eatingTimes = res.getStringArray(R.array.eatingTimes);
         description = res.getStringArray(R.array.description);
         calories = res.getStringArray(R.array.kcals);
 
         ItemAdapter itemAdapter = new ItemAdapter(this, items, description, calories);
         listView.setAdapter(itemAdapter);
 
-        /*addBtn.setOnClickListener(new View.OnClickListener() {
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-
-                System.out.print()
-
-                EditText firstNumEditText = (EditText) findViewById(R.id.firstNumEditText);
-                EditText secondNumEditText = (EditText) findViewById(R.id.secondNumEditText);
-                TextView resultTextView = (TextView) findViewById(R.id.resultTextView);
-
-                int position = items.length + 1;
-                String name =  firstNumEditText.getText().toString();
-                int num2 = Integer.parseInt(secondNumEditText.getText().toString());
-                String result = name + num2;
-                items[position] = name;
-                int num1 = Integer.parseInt(firstNumEditText.getText().toString());
-                resultTextView.setText(result + "");
-
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent showDetailActivity = new Intent(getApplicationContext(), DetailActivity.class);
+                showDetailActivity.putExtra("com.example.sds_mobileproject.ITEM_INDEX", position);
+                startActivity(showDetailActivity);
             }
-        });*/
+        });
+
 
         switchToCalc.setOnClickListener(new View.OnClickListener() {
             @Override

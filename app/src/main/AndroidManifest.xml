@@ -16,6 +16,9 @@
         android:theme="@style/Theme.SDS_mobileproject"
         tools:targetApi="31">
         <activity
+            android:name=".DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".CalculatorActivity"
             android:exported="false" />
         <activity
