@@ -2,6 +2,7 @@ package com.example.sds_mobileproject;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         Resources res = getResources();
 
         Button switchToCalc = (Button) findViewById(R.id.Calculator);
+        Button PortfolioButton = (Button) findViewById(R.id.PortfolioButton);
+
         listView = findViewById(R.id.calcListView);
 
         items = res.getStringArray(R.array.items);
@@ -40,6 +43,17 @@ public class MainActivity extends AppCompatActivity {
                 Intent showDetailActivity = new Intent(getApplicationContext(), DetailActivity.class);
                 showDetailActivity.putExtra("com.example.sds_mobileproject.ITEM_INDEX", position);
                 startActivity(showDetailActivity);
+            }
+        });
+
+        PortfolioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String portfoliUrl = "https://frankpak.github.io/WebPortfolio";
+                Uri webaddress = Uri.parse(portfoliUrl);
+                Intent gotoportfolio = new Intent(Intent.ACTION_VIEW, webaddress);
+
+                    startActivity(gotoportfolio);
             }
         });
 
